@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 services:
 
@@ -34,7 +34,7 @@ services:
       - log-volume:/home/out/
 
     depends_on:
-      - mongo-test
+      - mongo
     ports:
       - "5001:5001"
     env_file:
