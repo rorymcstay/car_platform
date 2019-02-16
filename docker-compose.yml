@@ -1,0 +1,79 @@
+version: '3'
+
+services:
+
+  mongo:
+    image: ${REGISTRY}/mongo
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    command: mongod
+
+  mongo-express:
+    image: ${REGISTRY}/mongo-express
+    container_name: mongo-express-test
+    restart: always
+    depends_on:
+      - mongo
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+
+  car-feed:
+    image: ${REGISTRY}/car-feed
+    container_name: car-feed
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - log-volume:/home/out/
+
+    depends_on:
+      - mongo-test
+    ports:
+      - "5001:5001"
+    env_file:
+      - docker.properties.env
+
+  influxdb:
+    image: ${REGISTRY}/influxdb:latest
+    container_name: influxdb
+    ports:
+    - "8083:8083"
+    - "8086:8086"
+    - "8090:8090"
+    - "25826:25826/udp"
+    env_file:
+    - env.influxdb
+
+  telegraf:
+    image: ${REGISTRY}/telegraf:latest
+    container_name: telegraf
+
+    depends_on:
+      - influxdb
+    volumes:
+      - ./telegraf/patterns.conf:/etc/telegraf/patterns.conf:ro
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - ./telegraf/supervisord.conf:/etc/telegraf/supervisord.conf:ro
+      - log-volume:/var/log/car_app:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana-test
+    ports:
+      - "3000:3000"
+    env_file:
+      - env.influxdb
+    depends_on:
+      - influxdb
+    volumes:
+      - ./grafana:/var/lib/grafana/
+
+volumes:
+  log-volume:
