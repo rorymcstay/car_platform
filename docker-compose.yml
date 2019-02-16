@@ -73,7 +73,8 @@ services:
     depends_on:
       - influxdb
     volumes:
-      - ./grafana:/var/lib/grafana/
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+      - ./grafana/dashboards/:/etc/grafana/dashboards/
 
 volumes:
   log-volume:
