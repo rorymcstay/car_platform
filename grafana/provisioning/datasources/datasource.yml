@@ -9,30 +9,30 @@ deleteDatasources:
 # what's available in the database
 datasources:
 # <string, required> name of the datasource. Required
-- name: InfluxDB
+- name: telegraf
   # <string, required> datasource type. Required
   type: influxdb
   # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required
-  access: direct
+  access: proxy
   # <int> org id. will default to orgId 1 if not specified
   orgId: 1
   # <string> url
   url: http://ec2-13-59-2-118.us-east-2.compute.amazonaws.com:8086
   # <string> database password, if used
-  password:
+  password: root
   # <string> database user, if used
-  user:
+  user: root
   # <string> database name, if used
   database: telegraf
   # <bool> enable/disable basic auth
-  basicAuth: true
+  basicAuth: false
   # <string> basic auth username
-  basicAuthUser: root
+  basicAuthUser:
   # <string> basic auth password
-  basicAuthPassword: root
+  basicAuthPassword:
   # <bool> enable/disable with credentials headers
   withCredentials:
   # <bool> mark as default datasource. Max one per org
   isDefault: true
   # <map> fields that will be converted to json and stored in jsonData
-  editable: false
+  editable: true
