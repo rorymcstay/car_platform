@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MongoConfiguration">
+    <option name="serverConfigurations">
+      <list>
+        <ServerConfiguration>
+          <option name="authenticationDatabase" value="admin" />
+          <option name="authenticationMechanism" value="SCRAM-SHA-1" />
+          <option name="password" value="root" />
+          <option name="serverUrls">
+            <list>
+              <option value="ec2-13-59-2-118.us-east-2.compute.amazonaws.com:27017" />
+            </list>
+          </option>
+          <option name="sshTunnelingConfiguration">
+            <SshTunnelingConfiguration />
+          </option>
+          <option name="username" value="root" />
+        </ServerConfiguration>
+      </list>
+    </option>
+  </component>
+</project>
