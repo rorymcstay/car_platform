@@ -15,7 +15,7 @@ services:
 
   mongo-express:
     image: ${REGISTRY}/mongo-express
-    container_name: mongo-express-test
+    container_name: mongo-express
     restart: always
     depends_on:
       - mongo
