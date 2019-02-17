@@ -17,7 +17,7 @@ datasources:
   # <int> org id. will default to orgId 1 if not specified
   orgId: 1
   # <string> url
-  url: http://ec2-13-59-2-118.us-east-2.compute.amazonaws.com:8086
+  url: http://influxdb:8086
   # <string> database password, if used
   password: root
   # <string> database user, if used
@@ -31,7 +31,7 @@ datasources:
   # <string> basic auth password
   basicAuthPassword:
   # <bool> enable/disable with credentials headers
-  withCredentials:
+  withCredentials: false
   # <bool> mark as default datasource. Max one per org
   isDefault: true
   # <map> fields that will be converted to json and stored in jsonData

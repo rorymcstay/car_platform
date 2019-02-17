@@ -22,7 +22,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "telegraf",
+      "datasource": "InfluxDB",
       "fill": 1,
       "gridPos": {
         "h": 9,
@@ -70,7 +70,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "select scraped from scraped  where thread = '0'",
+          "query": "select scraped from worker  where thread = '0'",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -107,7 +107,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "select scraped from scraped  where thread = '1'",
+          "query": "select scraped from worker  where thread = '1'",
           "rawQuery": true,
           "refId": "B",
           "resultFormat": "time_series",
@@ -144,7 +144,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "select scraped from scraped  where thread = '2'",
+          "query": "select scraped from worker  where thread = '2'",
           "rawQuery": true,
           "refId": "C",
           "resultFormat": "time_series",
@@ -181,7 +181,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "select scraped from scraped  where thread = '3'",
+          "query": "select scraped from worker  where thread = '3'",
           "rawQuery": true,
           "refId": "D",
           "resultFormat": "time_series",
@@ -218,9 +218,120 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "select scraped from scraped  where thread = '4'",
+          "query": "select scraped from worker  where thread = '4'",
           "rawQuery": true,
           "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select scraped from worker  where thread = '5'",
+          "rawQuery": true,
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select scraped from worker  where thread = '6'",
+          "rawQuery": true,
+          "refId": "H",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select scraped from worker  where thread = '7'",
+          "rawQuery": true,
+          "refId": "G",
           "resultFormat": "time_series",
           "select": [
             [
@@ -240,7 +351,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": "30m",
+      "timeFrom": "10m",
       "timeRegions": [],
       "timeShift": null,
       "title": "Individual thread progress",
@@ -289,7 +400,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "telegraf",
+      "datasource": "InfluxDB",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -357,7 +468,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "select last(m_collected) from collected where thread = 'main'",
+          "query": "select last(total) from batch_completion",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -392,8 +503,119 @@
       "valueName": "avg"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "InfluxDB",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 14,
+        "y": 0
+      },
+      "id": 14,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select -60*(last(batch_collected)/last(batch_time_elapsed)) from batch_completion",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": "",
+      "title": "Cars collected per minute",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
       "columns": [],
-      "datasource": "telegraf",
+      "datasource": "InfluxDB",
       "fontSize": "100%",
       "gridPos": {
         "h": 9,
@@ -534,7 +756,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "select last(thread),last( component),last( level),last( msg), last(scraped) from scraped where thread = '0' or thread ='1'or thread ='2' or thread ='3' or thread ='4'",
+          "query": "select ",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
