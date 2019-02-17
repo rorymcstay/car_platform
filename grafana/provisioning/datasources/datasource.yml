@@ -13,11 +13,11 @@ datasources:
   # <string, required> datasource type. Required
   type: influxdb
   # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required
-  access: proxy
+  access: direct
   # <int> org id. will default to orgId 1 if not specified
   orgId: 1
   # <string> url
-  url: http://localhost:8086
+  url: http://ec2-13-59-2-118.us-east-2.compute.amazonaws.com:8086
   # <string> database password, if used
   password:
   # <string> database user, if used
