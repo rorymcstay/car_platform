@@ -16,7 +16,7 @@ This creates configuration in the ```.docker``` directory
 
 1. login and allow docker access
 
-        ssh -i "id_rsa" ubuntu@ec2-13-59-2-118.us-east-2.compute.amazonaws.com
+        ssh -i "id_rsa" ubuntu@ec2-52-15-32-208.us-east-2.compute.amazonaws.com
         
         
 
