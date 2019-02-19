@@ -38,7 +38,7 @@ This creates configuration in the ```.docker``` directory
 
 3. log into the ecr
 
-        (aws ecr get-login --no-include-email --region us-east-1)
+        (aws ecr get-login --region us-east-1)
 
 4. using the git credential helper login with
 
