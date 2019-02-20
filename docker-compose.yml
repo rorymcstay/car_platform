@@ -8,6 +8,8 @@ services:
     restart: always
     ports:
       - "27017:27017"
+    volumes:
+      - /var/lib/car-data
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
@@ -16,7 +18,6 @@ services:
   mongo-express:
     image: ${REGISTRY}/mongo-express
     container_name: mongo-express
-    restart: always
     depends_on:
       - mongo
     ports:
@@ -28,7 +29,6 @@ services:
   car-feed:
     image: ${REGISTRY}/car-feed
     container_name: car-feed
-    restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - log-volume:/home/out/
@@ -39,6 +39,7 @@ services:
       - "5001:5001"
     env_file:
       - docker.properties.env
+    stop_grace_period: 2m
 
   influxdb:
     image: ${REGISTRY}/influxdb:latest
