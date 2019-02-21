@@ -36,9 +36,11 @@ This creates configuration in the ```.docker``` directory
         export AWS_ACCESS_KEY_ID=AKIAJX3CZLJ2ZFVZ25DQ
         export AWS_DEFAULT_OUTPUT=json
 
-3. log into the ecr
+3. log into the ecr and pull the image
 
         (aws ecr get-login --region us-east-1)
+
+         docker pull 064106913348.dkr.ecr.us-east-1.amazonaws.com/car-feed
 
 4. using the git credential helper login with
 
