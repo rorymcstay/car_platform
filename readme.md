@@ -17,8 +17,6 @@ This creates configuration in the ```.docker``` directory
 1. login and allow docker access
 
         ssh -i "id_rsa" ubuntu@ec2-52-15-32-208.us-east-2.compute.amazonaws.com
-        
-        
 
         ubuntu@car-browsers:~$ sudo groupadd docker
         ubuntu@car-browsers:~$ sudo gpasswd -a $USER docker
