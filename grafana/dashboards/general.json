@@ -22,7 +22,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "InfluxDB",
+      "datasource": "telegraf",
       "fill": 1,
       "gridPos": {
         "h": 9,
@@ -400,7 +400,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "InfluxDB",
+      "datasource": "telegraf",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -511,7 +511,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "InfluxDB",
+      "datasource": "telegraf",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -1124,5 +1124,5 @@
   "timezone": "",
   "title": "DoneDeal feed monitoring",
   "uid": "Nm_9o6Xiz",
-  "version": 3
+  "version": 4
 }
