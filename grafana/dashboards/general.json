@@ -91,7 +91,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": "2h",
+      "timeFrom": "10m",
       "timeRegions": [],
       "timeShift": null,
       "title": "Batch time",
@@ -1238,5 +1238,5 @@
   "timezone": "",
   "title": "DoneDeal feed monitoring",
   "uid": "Nm_9o6Xiz",
-  "version": 5
+  "version": 6
 }

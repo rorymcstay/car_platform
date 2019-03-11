@@ -54,8 +54,5 @@ This creates configuration in the ```.docker``` directory
 
         docker-compose up
 
-
-
-
-
-
+        # kill browsers
+        docker stop $(docker ps -q --filter ancestor=343402bb75a3 )

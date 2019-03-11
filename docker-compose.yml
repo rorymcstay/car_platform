@@ -13,6 +13,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: false
     command: mongod
 
   mongo-express:
@@ -78,3 +79,5 @@ services:
 
 volumes:
   log-volume:
+
+# docker stop $(docker ps -q --filter ancestor=343402bb75a3 )
